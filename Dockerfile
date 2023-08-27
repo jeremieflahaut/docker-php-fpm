@@ -9,7 +9,7 @@ RUN apt-get update \
 
 COPY ./crons/laravel /etc/cron.d/laravel
 
-RUN chmod 0644 /etc/cron.d/laravel
+RUN chmod 0644 /etc/cron.d/laravel && crontab /etc/cron.d/laravel
 
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
