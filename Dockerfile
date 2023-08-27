@@ -7,10 +7,6 @@ RUN apt-get update \
     && apt-get clean all \
     && apt-get clean
 
-COPY ./crons/laravel /etc/cron.d/laravel
-
-RUN chmod 0644 /etc/cron.d/laravel && crontab /etc/cron.d/laravel
-
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
