@@ -6,10 +6,3 @@ RUN apt-get install -y git unzip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www/html
-
-USER www-data
-
-EXPOSE 9000
-
-CMD ["php-fpm"]
