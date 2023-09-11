@@ -9,6 +9,18 @@ RUN apt-get update \
 
 RUN docker-php-ext-install pdo pdo_mysql exif
 
+RUN cd /tmp && \
+    git clone https://github.com/xdebug/xdebug.git && \
+    cd xdebug && \
+    git checkout xdebug_3_2 && \
+    phpize && \
+    ./configure --enable-xdebug && \
+    make && \
+    make install && \
+    rm -rf /tmp/xdebug
+
+RUN docker-php-ext-enable xdebug
+
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
