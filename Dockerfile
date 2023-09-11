@@ -7,6 +7,8 @@ RUN apt-get update \
     && apt-get clean all \
     && apt-get clean
 
+RUN docker-php-ext-install pdo pdo_mysql exif xdebug
+
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
