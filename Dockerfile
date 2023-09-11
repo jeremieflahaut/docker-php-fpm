@@ -9,9 +9,6 @@ RUN apt-get update \
 
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
-
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
